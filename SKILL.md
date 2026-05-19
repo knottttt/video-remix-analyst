@@ -57,6 +57,10 @@ When generating prompts for the bundle, the target tool determines the entire me
 - Describe **poses and compositions** — these are static freeze-frames, not motion
 - Hero character portraits should be isolated on clean white background; scene context only appears in designated panel areas (e.g., a bottom strip)
 - If the user already supplied character sheets, reference those images instead of re-describing the character's face, hair, or outfit in every shot
+- Storyboard-image deliverables must be a single integrated storyboard sheet, not separate outputs
+- The same canvas must contain the main storyboard panels plus the character-reference strip and the expression / pose reference strip
+- Place the character-reference strip and the expression / pose reference strip below or beside the panels as part of one unified layout, never as standalone companion images
+- Also include a separate expression / pose reference strip for the current copy, covering the key acting beats the downstream model must preserve
 - Omit audio, camera motion, and timestamps entirely — they have no meaning in a static image
 - All story moments coexist simultaneously on a single canvas; the reader's eye moves through space, not time
 
@@ -80,6 +84,10 @@ When generating prompts for the bundle, the target tool determines the entire me
   - Internal analysis stays explicit with fields such as `story_description`, `change_description`, `emotion_progression`, and `transition_bridge`.
   - Final user-facing `shot_prompts.md` must compress those fields into a natural storyboard paragraph per shot instead of exposing the field labels directly.
 - When character sheets are available, do not bloat the output with repeated appearance prose; let the images carry identity consistency.
+- For storyboard-image requests, treat the integrated sheet layout as a hard requirement, not a stylistic suggestion:
+  - the storyboard panels, character reference, and key expression / pose references must appear inside one merged storyboard canvas
+  - do not output `storyboard` and `reference sheet` as separate images
+  - if the current copy implies a special acting beat, make sure that beat appears in the integrated reference strip explicitly
 - Prompt review must inspect the final rendered storyboard text, not raw panel fields.
 - Semantic review must run in isolated context: pass only the rubric, rule flags, and rendered text, without project background.
 - Ambiguous style tradeoffs must be escalated as `NEEDS_HUMAN`; do not auto-resolve them in script logic.
