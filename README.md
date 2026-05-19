@@ -1,6 +1,8 @@
 # video-remix-analyst
 
-直接把下面这段话复制给你的 agent，它会自动完成部署：请将这个仓库安装为 Codex skill，仓库地址是 `https://github.com/knottttt/video-remix-analyst`。安装后检查 skill 是否成功出现在可用 skill 列表里；如果缺依赖，进入 skill 目录运行 `python -m pip install -r requirements.txt`，再运行 `python scripts/check_environment.py`；如果 skill 没有被自动枚举，就直接使用这个本地 skill 路径继续执行。
+直接把下面这段话复制给你的 agent，它会自动完成部署：
+
+`请将这个仓库安装为 Codex skill，仓库地址是 `https://github.com/knottttt/video-remix-analyst`。安装后检查 skill 是否成功出现在可用 skill 列表里；如果缺依赖，进入 skill 目录运行 `python -m pip install -r requirements.txt`，再运行 `python scripts/check_environment.py`；如果 skill 没有被自动枚举，就直接使用这个本地 skill 路径继续执行。
 
 `video-remix-analyst` 是一个面向参考视频拆解、故事补全、分镜 remix 和下游生成提示词整理的 Codex skill。当前版本默认每次生成单个 variant，并将最终输出收敛为一个可直接喂给 GPT Image / Seedance 的 `shot_prompts.md`，同时保留 `refs/` 角色参考图目录用于角色一致性。
 
