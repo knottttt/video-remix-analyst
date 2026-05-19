@@ -1,0 +1,51 @@
+{
+  "required_patterns": [
+    {
+      "pattern": "hatching",
+      "description": "Prompt must explicitly require hatching-style line treatment."
+    },
+    {
+      "pattern": "no soft gradients",
+      "description": "Prompt must ban soft tonal gradients that flatten the storyboard sketch look."
+    },
+    {
+      "pattern": "no airbrush",
+      "description": "Prompt must ban airbrushed rendering."
+    }
+  ],
+  "forbidden_patterns": [
+    {
+      "pattern": "少量灰阶",
+      "description": "This wording can push the model toward grayscale shading."
+    },
+    {
+      "pattern": "柔和",
+      "description": "This wording can soften line treatment and weaken the sketch aesthetic."
+    },
+    {
+      "pattern": "soft gray",
+      "description": "This wording can introduce gradient-heavy grayscale rendering."
+    },
+    {
+      "pattern": "炭笔质感",
+      "description": "This wording can steer toward smudged charcoal gradients."
+    }
+  ],
+  "manual_review_triggers": [
+    {
+      "pattern": "grayscale",
+      "description": "Grayscale can be acceptable only if it still preserves the hard-edged storyboard sketch style.",
+      "review_question": "这里提到 grayscale，是要保留纯分镜线稿语言，还是接受更明显的灰度铺调？"
+    },
+    {
+      "pattern": "gray wash",
+      "description": "Gray wash may be compatible or incompatible depending on how hard-edged the target look should remain.",
+      "review_question": "这里的 gray wash 是轻微辅助层次，还是会把画面带向柔和灰面效果？"
+    },
+    {
+      "pattern": "charcoal",
+      "description": "Charcoal can mean either crisp dry texture or smudged tonal rendering.",
+      "review_question": "这里的 charcoal 是要颗粒线性纹理，还是会引入大面积擦抹灰调？"
+    }
+  ]
+}

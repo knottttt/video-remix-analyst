@@ -1,0 +1,26 @@
+{
+  "profile_name": "pixar_3d",
+  "layout_preset": "single_page_film_beat_sheet",
+  "document_type": "professional film storyboard breakdown sheet, single-page production document layout",
+  "style_summary": "Pixar/Disney feature-film quality 3D animated storyboard document. Character panels and scene thumbnails rendered in polished stylized 3D with warm cinematic lighting, readable expressions, and physically coherent materials. The page itself is a structured production sheet with a dark header bar, white background, thin grey borders, and English labels.",
+  "label_language": "English",
+  "document_ui": {
+    "header_bar": "dark charcoal strip with compact white text",
+    "background": "clean white page",
+    "borders": "thin grey cell borders",
+    "section_headers": "bold production-style labels"
+  },
+  "rendering_rules": [
+    "Keep the result clearly identifiable as a production document, not a poster or collage.",
+    "All section labels and UI text should be in English.",
+    "Maintain consistent stylized 3D character design, material response, and lighting logic across all sections.",
+    "Use warm key lighting plus cooler environmental contrast when scene notes support it.",
+    "Preserve readable facial acting and silhouette clarity in small storyboard preview panels."
+  ],
+  "forbidden_drift": [
+    "Do not collapse the full page into one hero image.",
+    "Do not turn the layout into a flat graphic-design poster.",
+    "Do not invent precise architectural overhead-plan geometry beyond the symbolic blocking guide.",
+    "Do not switch styles across sections."
+  ]
+}

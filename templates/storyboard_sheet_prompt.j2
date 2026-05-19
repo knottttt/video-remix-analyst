@@ -1,0 +1,24 @@
+Professional storyboard sheet. Total shots: {{ target_panel_count }}. Pages: {{ page_count }}.
+
+STYLE — non-negotiable:
+Black and white only. Bold ink line art with hatching and cross-hatching for shadow areas. Hard edges, strong silhouettes, high contrast. No smooth gradients, no airbrush shading, no soft gray fills. Render exactly like a professional Hollywood production storyboard: clean thick panel borders, shot label below each panel, camera motion arrow drawn inside the frame. Think Lance Laspina or industry storyboard artist quality.
+
+LAYOUT — {{ panel_grid_rows }}x{{ panel_grid_cols }} grid per page. Every panel must appear; do not drop panels to fill the grid.
+{% if page_plan[0].include_reference_sidebar %}Page 1 includes a narrow character reference sidebar (right side) showing each character in a standing pose with name label.{% endif %}
+
+CHARACTERS:
+{% for char in characters %}
+{{ char.label }}: {{ char.identity_description }}{% if char.must_keep_traits %} Keep: {{ char.must_keep_traits | join(", ") }}.{% endif %}{% if char.forbidden_traits %} Avoid: {{ char.forbidden_traits | join(", ") }}.{% endif %}
+{% endfor %}
+
+PANELS:
+{% for page in page_plan %}
+— Page {{ page.page_number }} —
+{% for panel in page.panels %}
+Panel {{ panel.index }}: [{{ panel.shot_size }}{% if panel.camera_motion and panel.camera_motion not in ("static", "静止", "Static") %} / {{ panel.camera_motion }}{% endif %}] {{ panel.action }}
+{% endfor %}
+{% endfor %}
+
+Beat markers (label at page bottom): {{ beat_labels | join(" · ") }}
+
+Target aspect ratio: {{ target_aspect_ratio }}

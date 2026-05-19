@@ -1,0 +1,13 @@
+# 分镜表
+
+## 方案信息
+
+- 方案 ID：`{{ variant.variant_id }}`
+- 创意方向：{{ variant.creative_constraints }}
+- 目标画幅：`{{ variant.target_aspect_ratio }}`
+
+| Panel | 来源镜头 | Beat | 谁在做什么 | 发生了什么变化 | 情绪推进 | 如何承接下一镜 |
+| --- | --- | --- | --- | --- | --- | --- |
+{% for panel in variant.panels -%}
+| {{ loop.index }} | {{ panel.source_shot_id or "new" }} | {{ panel.beat }} | {{ panel.story_description }} | {{ panel.change_description }} | {{ panel.emotion_progression }} | {{ panel.transition_bridge }} |
+{% endfor %}

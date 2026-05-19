@@ -1,0 +1,25 @@
+# 使用说明
+
+## 路径 1：ChatGPT 网页版 + Seedance 网页版
+
+1. 打开 `prompt.md`。
+2. 将 `refs/` 里的参考图和 `prompt.md` 一起发给 ChatGPT。
+3. 按 `manifest.json` 里的分页计划生成 storyboard pack；如果镜头较多，应得到多页分镜图，而不是只出一张九宫格。
+4. 将整张分镜图，或裁切后的单个 panel，送入 Seedance。
+5. 如果某个 panel 需要单独重做，用 `motion_briefs.yaml` 作为运动说明补充。
+
+## 路径 2：Arcads 节点图
+
+1. 读取 `manifest.json`。
+2. 把 `prompt.md` 绑定到 gpt-image-2 节点。
+3. 按 `reference_images` 列表挂载参考图。
+4. 按 `page_plan` 逐页生成 storyboard pack。
+5. 把 `motion_briefs.yaml` 作为结构化运动控制输入。
+
+## 路径 3：本地脚本链路
+
+1. 读取 `manifest.json`。
+2. 将 `prompt.md` 和 `refs/` 一起送入你自己的图像生成调用。
+3. 按 `page_plan` 先生成整套 storyboard pack。
+4. 用 `motion_briefs.yaml` 驱动逐 panel 的视频生成。
+5. 保留 `manifest.json` 作为下游自动化的机器可读契约。

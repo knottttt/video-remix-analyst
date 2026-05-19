@@ -1,0 +1,7 @@
+weights:
+  clarity: 0.45
+  exposure: 0.25
+  center_bias: 0.20
+  saliency: 0.10
+sampling:
+  candidates_per_shot: 5

@@ -1,0 +1,30 @@
+{
+  "shot_fields": [
+    "shot_size",
+    "camera_angle",
+    "camera_motion",
+    "composition",
+    "lighting",
+    "main_subject",
+    "action",
+    "emotion",
+    "story_function",
+    "pacing_role"
+  ],
+  "continuity_fields": [
+    "beat_type",
+    "objective",
+    "emotional_direction",
+    "pacing_note",
+    "turning_point_note",
+    "key_shot_ids",
+    "reusability_note"
+  ],
+  "remix_fields": [
+    "reinterpretation_angle",
+    "structure_preservation",
+    "shot_reorder_degree",
+    "character_substitution_strength",
+    "dramatic_tone_shift"
+  ]
+}

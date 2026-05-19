@@ -1,0 +1,20 @@
+[analysis]
+whole_video_max_duration = 180.0
+whole_video_max_shots = 60
+chunk_segment_duration = 300.0
+chunk_segment_max_shots = 80
+chunk_segment_overlap_shots = 2
+short_shot_merge_seconds = 3.0
+
+[segmentation]
+scene_threshold = 27.0
+min_scene_len_frames = 12
+
+[remix]
+default_variant_count = 1
+default_panel_count = 0
+max_regen_rounds = 2
+jaccard_duplicate_threshold = 0.7
+
+[export]
+default_aspect_ratio = "9:16"

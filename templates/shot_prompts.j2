@@ -1,0 +1,15 @@
+# Shot Prompts — {{ variant.variant_id }}
+
+{{ variant.intro_line }}
+
+{% for panel in variant.panels -%}
+## Shot {{ loop.index }} ({{ panel.start_timecode }}–{{ panel.end_timecode }})
+
+**Image prompt:** {{ panel.shot_size }}, {{ panel.camera_angle }}. {{ panel.final_storyboard_paragraph }}
+
+**Seedance motion:** {{ panel.camera_motion }}. Duration: {{ panel.duration_target_seconds }}s. {{ panel.seedance_motion_hint }}{% if panel.reframe_note_9x16 %} Reframe note: {{ panel.reframe_note_9x16 }}{% endif %}
+
+**Mood:** {{ panel.emotion }}
+
+---
+{% endfor %}

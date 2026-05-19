@@ -1,0 +1,66 @@
+{{ doc.document_type }}.
+
+STYLE PROFILE — {{ doc.style_profile_name }}:
+{{ doc.style_profile.style_summary }}
+
+NON-NEGOTIABLE PAGE INTENT:
+- This must read as a single-page production document, not a poster, moodboard, or single-image hero art.
+- Use a structured {{ doc.layout_preset }} layout with clearly separated blocks and thin production-style borders.
+- All document labels and UI text are in {{ doc.style_profile.label_language }}.
+{% for rule in doc.style_profile.rendering_rules -%}
+- {{ rule }}
+{% endfor %}
+
+FORBIDDEN DRIFT:
+{% for item in doc.style_profile.forbidden_drift -%}
+- {{ item }}
+{% endfor %}
+
+HEADER BAR:
+- Full-width dark header strip at the top.
+- Compact production metadata in one line.
+- Include: `Project: Remix Variant | {{ doc.shot_range_label }} | Aspect: {{ doc.target_aspect_ratio }} | Function: {{ doc.dramatic_function }} | Arc: {{ doc.arc_summary }}`
+
+MAIN SCENE REFERENCE:
+- Bold section label: `Main Scene Reference`
+- One wide hero image that summarizes the scene.
+- Content brief: {{ doc.main_scene_reference }}
+
+CAMERA MAP BLOCK:
+- Bold section label: `Camera Map`
+- This is a simplified editorial camera map / symbolic blocking guide, not a precise architectural overhead plan.
+- Use a small text-driven schematic or ASCII-style blocking guide inside the document.
+{% for line in doc.camera_map_lines -%}
+- {{ line }}
+{% endfor %}
+- Add 2-4 short notes beside or below the schematic:
+{% for note in doc.camera_map_notes -%}
+  - {{ note }}
+{% endfor %}
+
+CHARACTER REFERENCE BLOCK:
+- Bold section label: `{{ doc.character_reference_title }}`
+- Show compact portrait references in a row or grid.
+{% for char in doc.characters %}
+- {{ char.label }}: {{ char.identity_description }}{% if char.must_keep_traits %} Keep: {{ char.must_keep_traits | join(", ") }}.{% endif %}{% if char.forbidden_traits %} Avoid: {{ char.forbidden_traits | join(", ") }}.{% endif %}
+{% endfor %}
+
+STORYBOARD PREVIEW BLOCK:
+- Bold section label: `{{ doc.storyboard_preview_title }}`
+- Show {{ doc.selected_panels | length }} preview panels for {{ doc.shot_range_label }}.
+{% for panel in doc.selected_panels -%}
+- Shot {{ "%02d" % panel.index }} | {{ panel.shot_size }} | {{ panel.start_timecode }}-{{ panel.end_timecode }}
+  Image brief: {{ panel.visual or panel.subject }}
+  Beat: {{ panel.beat | replace("_", " ") | title }}
+  Text note: {{ panel.final_storyboard_paragraph }}
+{% endfor %}
+
+LIGHTING & MATERIAL STRIP:
+- Bold section label: `Lighting & Material Reference`
+- Use compact swatches or reference chips at the bottom.
+{% for note in doc.lighting_material_notes -%}
+- {{ note }}
+{% endfor %}
+
+FOOTER NOTE:
+- Maintain one coherent environment and cast continuity across every block.

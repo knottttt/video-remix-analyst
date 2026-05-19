@@ -1,0 +1,46 @@
+{
+  "required_patterns": [
+    {
+      "pattern": "production document",
+      "description": "Prompt must identify the output as a production document rather than a single illustration."
+    },
+    {
+      "pattern": "single-page",
+      "description": "Prompt must lock the output to a single-page document layout."
+    },
+    {
+      "pattern": "camera map",
+      "description": "Prompt must include a dedicated camera map or blocking guide section."
+    },
+    {
+      "pattern": "storyboard preview",
+      "description": "Prompt must include a storyboard preview section rather than only one hero image."
+    }
+  ],
+  "forbidden_patterns": [
+    {
+      "pattern": "poster design",
+      "description": "Poster language can collapse the layout into a single-key-art composition."
+    },
+    {
+      "pattern": "moodboard collage",
+      "description": "Moodboard language can weaken the structured production-document layout."
+    },
+    {
+      "pattern": "single hero illustration",
+      "description": "The beat sheet must not reduce itself to one main illustration."
+    }
+  ],
+  "manual_review_triggers": [
+    {
+      "pattern": "floorplan",
+      "description": "Floorplan wording can imply geometric precision the source data does not support.",
+      "review_question": "这里的 floorplan 是符号化 blocking guide，还是会暗示精确空间俯视图？"
+    },
+    {
+      "pattern": "eyeline vectors",
+      "description": "Eyeline vector language can over-claim spatial certainty.",
+      "review_question": "这里的 eyeline vectors 是简化示意，还是在要求模型发明精确空间关系？"
+    }
+  ]
+}

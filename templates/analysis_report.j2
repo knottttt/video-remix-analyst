@@ -1,0 +1,40 @@
+# 分析报告
+
+## 视频信息
+
+- 视频 ID：`{{ project.source_video.video_id }}`
+- 时长：`{{ "%.2f"|format(project.source_video.duration_ms / 1000) }}s`
+- 画幅：`{{ project.source_video.aspect_ratio }}`
+- 是否含音频：`{{ project.source_video.audio_present }}`
+
+## 故事核心
+
+- Logline：{{ project.story_core.logline if project.story_core else "未生成" }}
+- 主题句：{{ project.story_core.theme_line if project.story_core else "未生成" }}
+- 核心问题：{{ project.story_core.central_question if project.story_core else "未生成" }}
+- 揭示/反转：{{ project.story_core.reveal_or_twist if project.story_core else "未生成" }}
+- 结尾状态：{{ project.story_core.ending_state if project.story_core else "未生成" }}
+
+## Beat 视图
+
+| Beat | 类型 | 时间 | 这一段发生了什么 | 这一段为什么存在 | 如何承接下一段 |
+| --- | --- | --- | --- | --- | --- |
+{% for beat in project.beats -%}
+| {{ beat.beat_id }} | {{ beat.beat_type }} | {{ beat.start_ms }}-{{ beat.end_ms }} | {{ beat.what_happens }} | {{ beat.story_purpose }} | {{ beat.transition_to_next }} |
+{% endfor %}
+
+## Shot 视图
+
+| 镜头 | 时间 | Beat | 谁在做什么 | 发生了什么变化 | 情绪如何推进 | 如何承接下一镜 |
+| --- | --- | --- | --- | --- | --- | --- |
+{% for shot in project.shots -%}
+| {{ shot.shot_id }} | {{ shot.start_ms }}-{{ shot.end_ms }} | {{ shot.beat_id or "" }} | {{ shot.story_description }} | {{ shot.change_description }} | {{ shot.emotion_progression }} | {{ shot.transition_bridge }} |
+{% endfor %}
+
+## 角色视图
+
+| 角色 | 名称 | 叙事功能 | 已确认 | 识别标签 | 证据帧数 |
+| --- | --- | --- | --- | --- | --- |
+{% for char in project.characters -%}
+| {{ char.character_id }} | {{ char.source_role_name }} | {{ char.narrative_function }} | {{ char.human_confirmed }} | {{ char.identity_description_tokens | join(", ") }} | {{ char.evidence_frames | length }} |
+{% endfor %}

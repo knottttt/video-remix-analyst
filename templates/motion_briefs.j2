@@ -1,0 +1,12 @@
+{% for panel in panels -%}
+panel_{{ "%02d"|format(loop.index) }}:
+  duration_target_seconds: {{ panel.duration_target_seconds }}
+  shot_size: {{ panel.shot_size }}
+  camera_motion: {{ panel.camera_motion }}
+  subject: {{ panel.subject | tojson }}
+  action: {{ panel.action | tojson }}
+  emotion: {{ panel.emotion | tojson }}
+  beat: {{ panel.beat | tojson }}
+  reframe_note_9x16: {{ panel.reframe_note_9x16 | tojson }}
+  seedance_motion_hint: {{ panel.seedance_motion_hint | tojson }}
+{% endfor %}
