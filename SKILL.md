@@ -37,6 +37,9 @@ Run the local Python pipeline in stages. Keep the agent responsible for multimod
 16. Video generation gate:
    - Only if the user explicitly asks to generate video, proceed to the downstream `dreamina CLI` step
    - Do not auto-run video generation just because Seedance prompts already exist
+17. `dreamina CLI` prerequisite:
+   - Before any downstream video generation, confirm that `dreamina CLI` is installed and callable in the local environment
+   - If `dreamina CLI` is not installed yet, install and verify it first, then continue to the explicit user-approved video generation step
 
 ## Agent-mode analysis
 
@@ -100,6 +103,9 @@ When generating prompts for the bundle, the target tool determines the entire me
   - first output the images and the prompts
   - wait for the user to explicitly request video generation
   - only then use `dreamina CLI` for the downstream video step
+- Treat `dreamina CLI` availability as a hard prerequisite for video generation:
+  - do not start the video step unless the CLI is already installed or has just been installed successfully
+  - if installation is still missing or broken, stop at prompts / images and report that video generation is blocked on CLI setup
 - Prompt review must inspect the final rendered storyboard text, not raw panel fields.
 - Semantic review must run in isolated context: pass only the rubric, rule flags, and rendered text, without project background.
 - Ambiguous style tradeoffs must be escalated as `NEEDS_HUMAN`; do not auto-resolve them in script logic.
